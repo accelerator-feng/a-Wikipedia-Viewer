@@ -1,14 +1,15 @@
 $(function() {
-    $("form").submit(function(e) {
+    $("form").submit(function(e) { 
         e.preventDefault();
         var text = $("input").val();
+        $("span").remove();
         $("ul").slideUp(500);
         text && search(text);
     });
 
     function search(text) {
         $.ajax({
-            url: 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&origin=*&gsrsearch=' + text,
+            url: 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&origin=*&gsrsearch=' + text, 
             success: function(response) {
                 $("li").remove();
                 try {
